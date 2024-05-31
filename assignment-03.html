@@ -1,0 +1,119 @@
+<!--Assignment3, Works both in Chrome and Firefox, Windows System-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="assignment-03.css">
+<script src="jquery-3.7.1.min.js"></script>
+<script src="assignment-03.js"></script>
+</head>
+<body>
+<input id="originalRowCnt" value="10" style="display:none">
+<input id="originalColCnt" value="5" style="display:none">
+<input id="selectedRowIndex" value="-1" style="display:none">
+<input id="selectedColIndex" value="-1" style="display:none">
+<input id="deleteType" value="" style="display:none">
+<div id="contextMenu" class="menu">
+    <div class="menuItem" id="menu1">Delete</div>
+</div>
+<div style="width:100%; text-align:center; margin-top:35px" >
+    <button id="btnAddRow">Add New Row</button>&nbsp;
+    <button id="btnAddCol">Add New Column</button>&nbsp;
+    <button id="btnSave">Save</button>&nbsp;
+    <button id="btnRestore">Restore</button>
+</div>
+<table>     
+    <!-- <colgroup>
+        <col style="padding-right: 90px;">
+        <col style="width:90px">
+    </colgroup> -->
+    <thead>
+    <tr>
+        <th>Name</th><th>ID</th><th>Assignment 1</th><th>Assignment 2</th><th>Assignment 3</th>
+        <th>Assignment 4</th><th>Assignment 5</th><th class="finalGrade">Average [%]</th>
+        <th class="letterGrade">Average [Letter]</th><th class="scaleGrade">Average [4.0]</th>    
+    </tr>    
+    </thead>
+    <tbody>
+    <tr>
+        <td>Grace Chen</td><td>23251105</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>John Smith</td><td>23219904</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Emily Johnson</td><td>23997720</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Michael Williams</td><td>23983401</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Sarah Brown</td><td>23668432</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Jessica Davis</td><td>23189430</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Christopher Xu</td><td>23998809</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Matthew Anderson</td><td>23135600</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>Amanda Garcia</td><td>23902134</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    <tr>
+        <td>David Taylor</td><td>23141141</td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="grade"><input value="-"></td>
+        <td class="grade"><input value="-"></td><td class="finalGrade">-</td>
+        <td class="letterGrade">-</td><td class="scaleGrade">-</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="8">Total number of unsubmitted assignments: <label id="unassigedNum"></label><br/><br/>
+        <label style="font-style:normal;color:#333333;">
+        (Note: There is a small bug for "Extra Credit Functionality" after you click the button "Restore", 
+        so if you want to select or delete a row or column, please refresh the webpage to rever to initial status, 
+        right click the name in each row or title to delete!)</label></td>        
+    </tr>
+    </tfoot>    
+</table>
+</body>
+</html>
